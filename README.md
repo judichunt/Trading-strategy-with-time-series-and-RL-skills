@@ -1,4 +1,4 @@
-# Trading-strategy-with-time-series-and-Reinforcement-Learning
+# Trading strategy with time series and Reinforcement Learning
 Type 	
   GetData
 	run
