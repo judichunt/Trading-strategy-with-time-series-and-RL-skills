@@ -16,7 +16,6 @@ end
 stocks(incomplete)=[];
 Market_Cap(incomplete)=[];
 Shares(incomplete)=[];
-%AdjClose(incomplete)=[];
 
 num=200;
 
@@ -37,8 +36,6 @@ returns(num+2,:)=ones(1, M);
 weight=ones(num,1)/num;
 for i=1:M
     returns(num+2,i)=returns(1:num,i)' * weight  ;
-    %weight = weight.*returns(1:num,i);
-    %weight=weight/sum(weight);
 end
 
 weight=Market_Cap ./ AdjClose(1:num,M) .* AdjClose(1:num,1);
@@ -64,10 +61,7 @@ Date(1,1:M)=stocks(1).Date;
 for i=1:num+3
     Ticker=cat(1,Ticker,stocks(i).Ticker);
 end
-%output(1:33,2:M+1)=returns;
 
-%xlswrite('features.xls',[c1,c2]);
-%output_matrix=[{' '} Ticker; Date returns];      %col_header; row_header data_cells
 xlswrite('Universe.xlsx',returns,'Sheet1','B2');     %Write data
 xlswrite('Universe.xlsx',Date,'Sheet1','B1');     %Write column header
 xlswrite('Universe.xlsx',Ticker,'Sheet1','A2');      %Write row header
@@ -81,7 +75,7 @@ Table1=table(mean(returns,2),std(returns,1,2), min(returns,[],2), max(returns,[]
 xlswrite('Universe.xlsx',table2array(Table1),'Sheet2','B2');
 
 
-%writetable(Table1,'Universe.xlsx','Sheet',1,'Range','BYO1');
+
 
 xlswrite('Universe.xlsx',Ticker,'Sheet3','A2');      %Write row header
 xlswrite('Universe.xlsx',Statistics_names,'Sheet2','B1');
