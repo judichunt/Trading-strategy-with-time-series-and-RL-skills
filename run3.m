@@ -73,7 +73,7 @@ Pre_weekly_alpha=Pre_weekly_returns-mean(ranged_weekly_returns);
 cap_weight(:,1)=selected_Shares.* True(:,100);
 cap_weight(:,1)=cap_weight(:,1)/sum(cap_weight(:,1));
 
-%cap_returns(1,1)=ranged_weekly_returns(:,1)*cap_weight(:,1);
+
 for i=1:(N-100)/5
     cap_returns(1,i)=(1+ranged_weekly_returns(:,i))'*cap_weight(:,i);
     cap_weight(:,i+1) = cap_weight(:,i).*(1+ranged_weekly_returns(:,i));
@@ -94,10 +94,8 @@ end
 
 Wp=(cap_weight(:,1:end-1)+active_weight);
 Portfolio_return=sum(Wp.*ranged_weekly_returns);
-% mean(Portflio_return)
-% mean(cap_returns)
 TE(k)=std(cap_returns-Portfolio_return)*sqrt(52)
-%sqrt(active_weight'*sigma*active_weight)
+
 
 end
 
