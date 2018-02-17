@@ -47,8 +47,6 @@ True=True(:,1:end-45);
 pred_nums=pred_stocks*pred_days;
 
 MSE=[sum(sum((Predict_AdjClose-True).^2))/pred_nums, sum(sum((Predict_returns-True).^2))/pred_nums, sum(sum((Predict_sharpe_ratio-True).^2))/pred_nums]
-%mean_Predict=(0*Predict_AdjClose+Predict_returns+Predict_sharpe_ratio)/2;
-%sum(sum((mean_Predict-True).^2))/pred_nums
 
 errorA=abs(Predict_AdjClose-True)./True;
 errorR=abs(Predict_returns-True)./True;
